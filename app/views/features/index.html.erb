@@ -1,24 +1,13 @@
-<h1>Listing features</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Created by</th>
-  </tr>
-
+<ul class="features item_list">
 <% @features.each do |feature| %>
-  <tr>
-    <td><%=h feature.name %></td>
-    <td><%=h feature.description %></td>
-    <td><%=h feature.created_by %></td>
-    <td><%= link_to 'Show', feature %></td>
-    <td><%= link_to 'Edit', edit_feature_path(feature) %></td>
-    <td><%= link_to 'Destroy', feature, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <li>
+    <ul class="item_detail">
+      <li class="feature_name"><%= link_to feature.name, feature %></li>
+    </ul>
+  </li>
 <% end %>
-</table>
+</ul>
 
-<br />
 
-<%= link_to 'New feature', new_feature_path %>
+
+<%= link_to 'New feature', new_project_feature_path(@project) %>

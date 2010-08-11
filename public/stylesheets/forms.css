@@ -19,21 +19,23 @@
 */
 /* =FORMS
    ------------------------------------------------------ */
-   #content form > ul {
-      padding: 0;
-   }
-   
    form > ul > li {
       border-bottom: 1px solid rgba(0,0,0,.05);
       padding: 0.75em 0;
    }
    
    input[type="text"],
-   input[type="password"] {
+   input[type="password"],
+   textarea {
       border: 1px solid rgba(0,0,0,0.15);
       display: block;
       font-size: 1.25em;
-      padding: 0.45em;
+      padding: 4px;
+   }
+   
+   textarea {
+      height: 240px;
+      width: 510px;
    }
    
    input[type="submit"] {
@@ -79,5 +81,5 @@
    .errorExplanation ul > li {
       list-style: square inside;
       opacity: 0.75;
-      padding: 0 1em;
+      padding: 0 1.5em;
    }

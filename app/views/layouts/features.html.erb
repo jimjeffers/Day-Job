@@ -12,6 +12,7 @@
     <h1><%= @project.name %></h1>
     <%= yield %>
   </div>
+  <%= link_to "Return to Projects", projects_path, :id => "back_link" %>
   <%= render :partial => 'layouts/account_navigation' %>
   <%= render :partial => 'layouts/script' %>
 </body>

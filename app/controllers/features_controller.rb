@@ -1,10 +1,11 @@
 class FeaturesController < ApplicationController
   before_filter :require_user
+  before_filter :get_project
   
   # GET /features
   # GET /features.xml
   def index
-    @features = Feature.all
+    @features = @project.features
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +16,7 @@ class FeaturesController < ApplicationController
   # GET /features/1
   # GET /features/1.xml
   def show
-    @feature = Feature.find(params[:id])
+    @feature = @project.features.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,17 +37,18 @@ class FeaturesController < ApplicationController
 
   # GET /features/1/edit
   def edit
-    @feature = Feature.find(params[:id])
+    @feature = @project.features.find(params[:id])
   end
 
   # POST /features
   # POST /features.xml
   def create
     @feature = Feature.new(params[:feature])
+    @feature.created_by = current_user
 
     respond_to do |format|
-      if @feature.save
-        format.html { redirect_to(@feature, :notice => 'Feature was successfully created.') }
+      if @project.features << @feature
+        format.html { redirect_to(project_features_path(@project), :notice => 'Feature was successfully created.') }
         format.xml  { render :xml => @feature, :status => :created, :location => @feature }
       else
         format.html { render :action => "new" }
@@ -62,7 +64,7 @@ class FeaturesController < ApplicationController
 
     respond_to do |format|
       if @feature.update_attributes(params[:feature])
-        format.html { redirect_to(@feature, :notice => 'Feature was successfully updated.') }
+        format.html { redirect_to(project_features_path(@project), :notice => 'Feature was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,8 +80,21 @@ class FeaturesController < ApplicationController
     @feature.destroy
 
     respond_to do |format|
-      format.html { redirect_to(features_url) }
+      format.html { redirect_to(project_features_path(@project)) }
       format.xml  { head :ok }
     end
   end
+  
+  private
+  
+  def get_project
+    if params[:project_id]
+      @project = Project.find(params[:project_id])
+    else
+      feature = Feature.find(params[:id])
+      @project = Project.find(feature.project.id) unless feature.nil?
+    end
+    redirect_to(projects_path, :notice => "The project you were looking for could not be found.") if @project.nil?
+  end
+  
 end

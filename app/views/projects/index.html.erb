@@ -1,18 +1,12 @@
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
-
+<ul class="projects item_list">
 <% @projects.each do |project| %>
-  <tr>
-    <td><%=h project.name %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <li class="project" id="project_<%= project.id %>">
+    <ul class="project_details item_detail">
+      <li class="project_name"><%= link_to project.name, project_features_path(project) %></li>
+      <li class="project_settings"><%= link_to 'Settings', edit_project_path(project) %></li>
+    </ul>
+  </li>
 <% end %>
-</table>
-
-<br />
+</ul>
 
 <%= link_to 'New project', new_project_path %>

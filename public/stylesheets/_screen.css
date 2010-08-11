@@ -50,6 +50,12 @@
    Presentation for various general navigation objects. */
    @import "navigation.css";
 
+/* Lists
+   Layouts for the list displays throughout the site.
+   -item_list
+   -project_list */
+   @import "lists.css";
+
 /* Grid
    CSS Grid displayed beneath content for layout modifications. */
    @import "grid.css";

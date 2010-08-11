@@ -1,24 +1,6 @@
 <h1>Editing feature</h1>
 
-<% form_for(@feature) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :created_by %><br />
-    <%= f.text_field :created_by %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+<%= render :partial => 'project_form', :locals => {:project => @project, :feature => @feature, :submit => "Create Feature"} %>
 
 <%= link_to 'Show', @feature %> |
-<%= link_to 'Back', features_path %>
+<%= link_to 'Back', project_features_path(@project) %>

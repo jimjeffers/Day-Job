@@ -1,23 +1,5 @@
-<h1>New feature</h1>
+<%= link_to '&lt; Return to Features', project_features_path(@project), :id => "step_back" %>
 
-<% form_for(@feature) do |f| %>
-  <%= f.error_messages %>
+<h2>New feature</h2>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :created_by %><br />
-    <%= f.text_field :created_by %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', features_path %>
+<%= render :partial => 'project_form', :locals => {:project => @project, :feature => @feature, :submit => "Create Feature"} %>

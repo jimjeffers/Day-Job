@@ -1,6 +1,8 @@
 class Project < ActiveRecord::Base
   # --------------------------------------------------------------
   # Relationships
+  
+  has_many :features
 
   # --------------------------------------------------------------
   # Validations
