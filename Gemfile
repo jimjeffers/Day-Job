@@ -25,12 +25,12 @@ end
 group :test do
   gem "rspec", "1.3.0"
   gem "rspec-rails", "1.3.2"
-  gem "faker"
-  gem "database_cleaner", :git => "git://github.com/bmabey/database_cleaner.git"
   
   # ----------------------------------------------
   # I'm no longer a fan of this shit.
   # 
+  # gem "faker"
+  # gem "database_cleaner", :git => "git://github.com/bmabey/database_cleaner.git"
   # gem "capybara", :git => "git://github.com/jnicklas/capybara.git"
   # gem "cucumber"
   # gem "cucumber-rails"
