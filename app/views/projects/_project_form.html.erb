@@ -1,0 +1,12 @@
+<% form_for(project) do |f| %>
+  <%= f.error_messages %>
+  <ul>
+    <li>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </li>
+    <li>
+      <%= f.submit submit %>
+    </li>
+  </ul>
+<% end %>
