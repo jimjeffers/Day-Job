@@ -24,7 +24,7 @@ class Project < ActiveRecord::Base
   aasm_state :on_hold
   
   aasm_event :start do
-    transitions :to => :active, :from => [:new. :on_hold]
+    transitions :to => :active, :from => [:new, :on_hold]
   end
   
   aasm_event :complete do
