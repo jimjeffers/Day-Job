@@ -19,16 +19,49 @@
 */
 /* =FORMS
    ------------------------------------------------------ */
+   #content form > ul {
+      padding: 0;
+   }
+   
    form > ul > li {
       border-bottom: 1px solid rgba(0,0,0,.05);
       padding: 0.75em 0;
    }
+   
    input[type="text"],
    input[type="password"] {
       border: 1px solid rgba(0,0,0,0.15);
       display: block;
       font-size: 1.25em;
       padding: 0.45em;
+   }
+   
+   input[type="submit"] {
+      background: #c00;
+      border-bottom: 3px solid rgba(0,0,0,0.5);
+      border-left: 3px solid rgba(255,255,255,0.25);
+      border-radius:5px;
+        -o-border-radius:5px;
+        -icab-border-radius:5px;
+        -khtml-border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -moz-border-radius:5px;
+      border-right: 3px solid rgba(0,0,0,0.5);
+      border-top: 3px solid rgba(255,255,255,0.25);
+      color: rgba(0,0,0,0.85);
+      font-size: 1.25em;
+      font-weight: bold;
+      line-height: 1.5em;
+      text-shadow: rgba(255,255,255,0.25) -1px -1px 0;
+   }
+   
+   input[type="submit"]:active {
+      background: #f00;
+      border-bottom: 3px solid rgba(255,255,255,0.25);
+      border-left: 3px solid rgba(0,0,0,0.5);
+      border-right: 3px solid rgba(255,255,255,0.25);
+      border-top: 3px solid rgba(0,0,0,0.5);
    }
    
    label {

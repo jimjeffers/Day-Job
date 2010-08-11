@@ -9,8 +9,10 @@
 <body>
   <%= render :partial => 'layouts/flash' %>
   <div id="content">
+    <h1><%= @project.name %></h1>
     <%= yield %>
   </div>
   <%= render :partial => 'layouts/account_navigation' %>
+  <%= render :partial => 'layouts/script' %>
 </body>
 </html>

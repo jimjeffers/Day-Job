@@ -1,1 +1,24 @@
 <%= javascript_include_tag 'modernizr-1.5.min.js', 'jquery-1.4.2.min.js', 'app.js', :cache => "application" %>
+<% if ENV["RAILS_ENV"] == "development" %>
+<ul id="grid">
+   <li>&nbsp;</li>
+   <li>&nbsp;</li>
+   <li>&nbsp;</li>
+   <li>&nbsp;</li>
+   
+   <li>&nbsp;</li>
+   <li>&nbsp;</li>
+   <li>&nbsp;</li>
+   <li>&nbsp;</li>
+   
+   <li>&nbsp;</li>
+   <li>&nbsp;</li>
+   <li>&nbsp;</li>
+   <li>&nbsp;</li>
+   
+   <li>&nbsp;</li>
+   <li>&nbsp;</li>
+   <li>&nbsp;</li>
+   <li>&nbsp;</li>
+</ul>
+<% end %>
