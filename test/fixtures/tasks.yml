@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  hours: 1.5
+  aasm_state: MyString
+  completed_by: 1
+  completed_on: 2010-08-12
+  created_by: 1
+  assigned_to: 1
+
+two:
+  name: MyString
+  hours: 1.5
+  aasm_state: MyString
+  completed_by: 1
+  completed_on: 2010-08-12
+  created_by: 1
+  assigned_to: 1
