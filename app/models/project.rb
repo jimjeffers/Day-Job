@@ -37,12 +37,14 @@ class Project < ActiveRecord::Base
   end
   
   aasm_event :suspend do
-    transitions :to => :on_hold, :from => [:active]
+    transitions :to => :on_hold, :from => [:active, :new]
   end
     
   # --------------------------------------------------------------
   # Scopes
-    
+  
+  named_scope :active, :conditions => ["projects.aasm_state=? OR projects.aasm_state=?","new","active"]
+  
   # --------------------------------------------------------------
   # Callbacks
     

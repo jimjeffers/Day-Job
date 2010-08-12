@@ -1,4 +1,7 @@
 <%= link_to '&lt; Return to Projects', projects_path, :id => "step_back" %>
 <h2>Editing Project</h2>
-
 <%= render :partial => 'project_form', :locals => {:project => @project, :submit => 'Update Project'} %>
+<h3><%= link_to "Archive this Project", suspend_project_path(@project) %></h3>
+<p>Archiving this project means that it will no longer come up on the main menu of active projects
+for yourself and any other people participating on the project. It is not deleted and can be
+reactivated at a later point in time if you choose to do so.</p>

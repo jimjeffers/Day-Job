@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = current_user.projects
+    @projects = current_user.projects.active
     @admin_projects = current_user.admin_projects.map { |p| p.id }
     respond_to do |format|
       format.html # index.html.erb
@@ -109,4 +109,20 @@ class ProjectsController < ApplicationController
       redirect_to(projects_url, :notice => "No project was found with that ID.")
     end
   end
+  
+  # GET /projects/1/suspend
+  def suspend
+    begin
+      @project = current_user.admin_projects.find(params[:id])
+      if !@project.on_hold?
+        @project.suspend!
+        redirect_to(projects_url, :notice => "#{@project.name} has been suspended.")
+      else
+        redirect_to(projects_url, :notice => "Project could not be suspended.")
+      end
+    rescue
+      redirect_to(projects_url, :notice => "No project was found with that ID.")
+    end
+  end
+  
 end
