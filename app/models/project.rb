@@ -3,6 +3,9 @@ class Project < ActiveRecord::Base
   # Relationships
   
   has_many :features
+  has_many :users, :through => :invitations, :conditions => ["invitations.aasm_state=?","accepted"]
+  has_many :admins, :source => :project, :through => :invitations, :conditions => ["invitations.aasm_state=? AND (invitations.admin=? OR invitations.owner=?)","accepted",1,1]
+  has_many :invitations
 
   # --------------------------------------------------------------
   # Validations
@@ -48,4 +51,9 @@ class Project < ActiveRecord::Base
     
   # --------------------------------------------------------------
   # Instance Methods
+  
+  def set_owner(user)
+    Invitation.create!(:project => self, :user => user, :owner => 1, :admin => 1).accept!
+  end
+  
 end

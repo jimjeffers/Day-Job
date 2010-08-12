@@ -1,0 +1,6 @@
+<hgroup>
+  <h1>You've been invited to work on: <%= @invitation.project.name %></h1>
+  <h2>Just login to you're account to accept this invitation.</h2>
+</hgroup>
+<%= render :partial => 'user_sessions/login_form', :locals => { :user_session => @user_session, 
+                                                                :token => @invitation.token} %>

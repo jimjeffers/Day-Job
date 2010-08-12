@@ -32,31 +32,25 @@
    }
    
    .item_list > li {
-      padding: 10px 0;
+      padding: 0;
    }
    
    .item_detail > li {
       float: left;
    }
    
-/* =PROJECT_LIST
-   ------------------------------------------------------ */
-   .project_name {
-      font-size: 1.25em;
-      line-height: 1.5em;
-   }
-   
-   .item_detail > li.project_settings {
+   .item_detail > li.edit_link {
       float: right;
       font-size: 0.875em;
       line-height: 1.5em;
    }
    
-   .project_settings a {
+   .edit_link a {
+      background: rgba(0,0,0,0.1);
       color: #666;
       display: block;
       opacity: 0;
-      padding: 10px 10px 0 10px;
+      padding: 10px;
       transition: opacity 0.25s ease;
         -webkit-transition: opacity 0.25s ease;
         -o-transition: opacity 0.25s ease;
@@ -67,6 +61,16 @@
       background: rgba(0,0,0,0.1);
    }
    
-   .item_list > li:hover .project_settings a {
+   .item_list > li:hover .edit_link a {
       opacity: 1;
+   }
+   
+   .item_name {
+      font-size: 1.25em;
+      line-height: 1.5em;
+   }
+   
+   .item_name a {
+      display: block;
+      padding: 5px;
    }

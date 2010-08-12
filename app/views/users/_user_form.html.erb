@@ -18,7 +18,8 @@
       <%= f.password_field :password_confirmation %>
     </li>
     <li class="submit">
-      <%= f.submit "Submit" %>
+      <%= f.submit submit %>
+      <%= hidden_field_tag 'token', token unless token.nil? %>
     </li>
   </ul>
 <% end -%>

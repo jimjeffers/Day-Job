@@ -21,15 +21,28 @@
    ------------------------------------------------------ */
    .error,
    .notice {
-      background: #900;
-      color: #fff;
-      display:block;
+      background: rgba(255,0,0,0.15);
+      color: #000;
+      display: block;
+      font-size: 1.25em;
+      font-weight: bold;
+      left: 0;
       padding: 0.875em;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: -1;
+   }
+   
+   .error p,
+   .notice p {
+      margin: 0 auto;
       text-align: center;
+      width: 960px;
    }
    
 /* =NOTICE
    ------------------------------------------------------ */
    .notice {
-      background: #290;
+      background: rgba(0,255,0,0.15);
    }

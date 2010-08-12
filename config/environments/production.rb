@@ -26,3 +26,15 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+ActionMailer::Base.smtp_settings = {
+  :enable_starttls_auto => true,
+  :address        => 'smtp.gmail.com',
+  :port           => 587,
+  :domain         => 'sumocreations.com',
+  :authentication => :plain,
+  :user_name      => 'jim@sumocreations.com',
+  :password       => '944turbo'
+}
+
+config.action_mailer.default_url_options = { :host => "dayjobapp.heroku.com" }

@@ -1,0 +1,5 @@
+<%= link_to '&lt; Return to Features', project_features_path(@project), :id => "step_back" %>
+
+<h2>Invite User</h2>
+
+<%= render :partial => 'invitation_form', :locals => {:project => @project, :invitation => @invitation, :submit => "Send Invitation"} %>

@@ -1,0 +1,12 @@
+<% form_for(invitation, :url => send_invite_project_path(project)) do |f| %>
+  <%= f.error_messages %>
+  <ul>
+    <li>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </li>
+    <li>
+      <%= f.submit submit %>
+    </li>
+  </ul>
+<% end %>

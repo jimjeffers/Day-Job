@@ -10,8 +10,11 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
+      if params[:token] and !(invitation = Invitation.find_by_token(params[:token])).nil?
+        invitation.accept_on_behalf_of_user!(@user_session.record)
+      end
       flash[:notice] = "Successfully logged in."
-      redirect_to root_url
+      redirect_to projects_path
     else
       render :action => 'new'
     end

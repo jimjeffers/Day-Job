@@ -2,4 +2,4 @@
   <h1>Login</h1>
   <h2>Not a member? <%= link_to "Sign up now!", signup_path %></h2>
 </hgroup>
-<%= render :partial => 'login_form', :locals => {:user_session => @user_session} %>
+<%= render :partial => 'login_form', :locals => {:user_session => @user_session, :token => params[:token]} %>

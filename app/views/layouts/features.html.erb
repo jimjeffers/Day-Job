@@ -7,12 +7,15 @@
   <%= render :partial => 'layouts/head' %>
 </head>
 <body>
-  <%= render :partial => 'layouts/flash' %>
-  <div id="content">
+  <%= render :partial => 'layouts/alerts' %>
+  <div id="content" class="content">
     <h1><%= @project.name %></h1>
-    <%= yield %>
+    <%= yield :layout %>
   </div>
-  <%= link_to "Return to Projects", projects_path, :id => "back_link" %>
+  <div id="secondary_content" class="content">
+    <%= yield :secondary_content %>
+  </div>
+  <%= render :partial => 'layouts/back_link' %>
   <%= render :partial => 'layouts/account_navigation' %>
   <%= render :partial => 'layouts/script' %>
 </body>

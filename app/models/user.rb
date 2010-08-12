@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   # A user has many tasks.
   
   has_many :categories
+  has_many :invitations
+  has_many :projects, :through => :invitations, :conditions => ["invitations.aasm_state=?","accepted"]
+  has_many :admin_projects, :source => :project, :through => :invitations, :conditions => ["invitations.aasm_state=? AND (invitations.admin=? OR invitations.owner=?)","accepted",1,1]
   
   # --------------------------------------------------------------
   # Validations

@@ -5,7 +5,10 @@ ActionController::Routing::Routes.draw do |map|
   #
   # Projects are treated as a simple resource.
   
-  map.resources :projects, :shallow => true do |project|
+  map.resources :projects, 
+                :member               => { :invite        => [:get],
+                                           :send_invite   => [:post] },
+                :shallow => true do |project|
     
     # --------------------------------------------------------------
     # Features
@@ -40,6 +43,15 @@ ActionController::Routing::Routes.draw do |map|
   map.resources     :user_sessions
   map.login         'login',          :controller => :user_sessions,    :action => :new
   map.logout        'logout',         :controller => :user_sessions,    :action => :destroy
+  
+  # --------------------------------------------------------------
+  # Invitations
+  #
+  # Users need to be able to accept invitations from an encrypted
+  # token sent via email.
+  
+  map.accept_invite 'accept_invite/:token',  
+                                      :controller => :invitations,      :action => :accept      
   
   # --------------------------------------------------------------
   # Defaults

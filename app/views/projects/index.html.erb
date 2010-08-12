@@ -2,8 +2,10 @@
 <% @projects.each do |project| %>
   <li class="project" id="project_<%= project.id %>">
     <ul class="project_details item_detail">
-      <li class="project_name"><%= link_to project.name, project_features_path(project) %></li>
-      <li class="project_settings"><%= link_to 'Settings', edit_project_path(project) %></li>
+      <li class="item_name"><%= link_to project.name, project_features_path(project) %></li>
+      <% if @admin_projects.include?(project)%>
+      <li class="edit_link"><%= link_to 'edit', edit_project_path(project) %></li>
+      <% end %>
     </ul>
   </li>
 <% end %>

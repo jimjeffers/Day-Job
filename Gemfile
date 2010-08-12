@@ -18,6 +18,7 @@ gem "yui-compressor", :require => "yui/compressor"
 group :development do
   # bundler requires these gems in development
   gem "rails-footnotes"
+  gem "ruby-debug"
   gem "directory_watcher"
   gem "assetbuild", :require => "asset_build/css_reader"
 end

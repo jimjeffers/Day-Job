@@ -1,0 +1,16 @@
+<hgroup>
+  <h1>You've been invited to work on: <%= @invitation.project.name %></h1>
+  <h2>If you've never used DayJob before simply fill out the form below to create a free account.</h2>
+</hgroup>
+<%= render :partial => 'users/user_form', :locals => { :user => @user, 
+                                                       :token => @invitation.token,
+                                                       :submit => "Register Your Account"} %>
+                                                                
+<% content_for(:secondary_content) do %>
+  <hgroup>
+    <h1>Already a Member?</h1>
+    <h2>Existing users accept this invite by logging in.</h2>
+  </hgroup>
+  <%= render :partial => 'user_sessions/login_form', :locals => { :user_session => @user_session, 
+                                                                  :token => @invitation.token} %>
+<% end %>

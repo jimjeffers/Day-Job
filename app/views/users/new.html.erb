@@ -3,4 +3,6 @@
   <h2>It's free and always will be... until this beta ends that is.</h2>
   <h3><%= link_to "Existing users sign in here.", login_path %></h3>
 </hgroup>
-<%= render :partial => 'user_form', :locals => {:user => @user} %>
+<%= render :partial => 'user_form', :locals => { :user => @user, 
+                                                 :token => params[:token], 
+                                                 :submit => "Register Your Account" } %>

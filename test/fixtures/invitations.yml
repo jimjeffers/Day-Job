@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  aasm_state: MyString
+  admin: 1
+  owner: 1
+
+two:
+  aasm_state: MyString
+  admin: 1
+  owner: 1

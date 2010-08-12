@@ -89,10 +89,10 @@ class FeaturesController < ApplicationController
   
   def get_project
     if params[:project_id]
-      @project = Project.find(params[:project_id])
+      @project = current_user.projects.find(params[:project_id])
     else
       feature = Feature.find(params[:id])
-      @project = Project.find(feature.project.id) unless feature.nil?
+      @project = current_user.projects.find(feature.project.id) unless feature.nil?
     end
     redirect_to(projects_path, :notice => "The project you were looking for could not be found.") if @project.nil?
   end

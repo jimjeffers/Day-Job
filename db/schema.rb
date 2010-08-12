@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100810221529) do
+ActiveRecord::Schema.define(:version => 20100811072402) do
 
   create_table "features", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,24 @@ ActiveRecord::Schema.define(:version => 20100810221529) do
 
   add_index "features", ["aasm_state"], :name => "index_features_on_aasm_state"
   add_index "features", ["project_id"], :name => "index_features_on_project_id"
+
+  create_table "invitations", :force => true do |t|
+    t.string   "aasm_state"
+    t.string   "token"
+    t.string   "email"
+    t.integer  "admin",      :default => 0
+    t.integer  "owner",      :default => 0
+    t.integer  "created_by"
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invitations", ["created_by"], :name => "index_invitations_on_created_by"
+  add_index "invitations", ["project_id"], :name => "index_invitations_on_project_id"
+  add_index "invitations", ["token"], :name => "index_invitations_on_token"
+  add_index "invitations", ["user_id"], :name => "index_invitations_on_user_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name"

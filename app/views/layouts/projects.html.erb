@@ -7,10 +7,13 @@
   <%= render :partial => 'layouts/head' %>
 </head>
 <body>
-  <%= render :partial => 'layouts/flash' %>
-  <div id="content">
+  <%= render :partial => 'layouts/alerts' %>
+  <div id="content" class="content">
     <h1>Projects</h1>
-    <%= yield %>
+    <%= yield :layout %>
+  </div>
+  <div id="secondary_content" class="content">
+    <%= yield :secondary_content %>
   </div>
   <%= render :partial => 'layouts/account_navigation' %>
   <%= render :partial => 'layouts/script' %>

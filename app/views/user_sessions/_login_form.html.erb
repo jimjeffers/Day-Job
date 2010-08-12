@@ -11,6 +11,7 @@
     </li>
     <li class="submit">
       <%= f.submit "Login" %>
+      <%= hidden_field_tag 'token', token unless token.nil? %>
     </li>
   </ul>
 <% end -%>
