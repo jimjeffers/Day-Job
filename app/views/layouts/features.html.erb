@@ -13,7 +13,13 @@
     <%= yield :layout %>
   </div>
   <div id="secondary_content" class="content">
-    <%= yield :secondary_content %>
+    <nav class="contextual_navigation">
+      <ul>
+        <li><%= link_to 'Feature List', project_features_path(@project) %></li>
+        <li><%= link_to 'Add New Feature', new_project_feature_path(@project) %></li>
+        <li><%= link_to 'Invite User', invite_project_path(@project) %></li>
+      </ul>
+    </nav>
   </div>
   <%= render :partial => 'layouts/back_link' %>
   <%= render :partial => 'layouts/account_navigation' %>

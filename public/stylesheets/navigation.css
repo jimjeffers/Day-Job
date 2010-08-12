@@ -58,3 +58,33 @@
       padding: 0 0 6px 0;
       margin-bottom: 6px;
    }
+
+/* =CONTEXTUAL_NAVIGATION
+   ------------------------------------------------------ */
+   .contextual_navigation {
+      border-top: 2px solid #000;
+      margin-top: 59px;
+      overflow: hidden;
+      padding-top: 10px;
+   }
+   
+   .contextual_navigation li {
+      float: left;
+   }
+   
+   .contextual_navigation a {
+      background: rgba(0,0,0,0.75);
+      color: #fff;
+      display: block;
+      margin: 2px;
+      padding: 4px 10px;
+      
+      transition: background 0.25s ease;
+        -webkit-transition: background 0.25s ease;
+        -o-transition: background 0.25s ease;
+        -moz-transition: background 0.25s ease;
+   }
+   
+   .contextual_navigation a:hover {
+      background: rgba(0,0,0,1);
+   }
