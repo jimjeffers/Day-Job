@@ -13,13 +13,29 @@ ActionController::Routing::Routes.draw do |map|
     # --------------------------------------------------------------
     # Features
     #
-    # Features are treated as a simple resource with several member
+    # Features are treated as a shallow nested resource with several member
     # and collection methods to make it easy to filter or change
     # the state of a feature's implementation.
 
     project.resources  :features, 
                        :member       => { :complete      => [:get, :post],
-                                          :undo          => [:get, :post]}
+                                          :undo          => [:get, :post]} do |feature|
+    
+      # --------------------------------------------------------------
+      # Tasks
+      #
+      # Tasks are treated as a nested resource to features with several 
+      # member and collection methods to make it easy to filter or change
+      # the state of a state from pending to complete.
+
+      feature.resources  :tasks, 
+                         :member       => { :enter_time      => [:get, :post], # Presents time entry form.
+                                            :complete        => [:post],       # Performs time entry.
+                                            :delegate        => [:get, :post], # Presents delegation form.
+                                            :assign          => [:post],       # Performs delegation.
+                                            :undo            => [:get]},       # Reverts time entry.
+                        :shallow => false
+    end
   end
   
   # --------------------------------------------------------------

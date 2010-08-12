@@ -1,0 +1,16 @@
+<% form_for([feature,task]) do |f| %>
+  <%= f.error_messages %>
+  <ul>
+    <li>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </li>
+    <li>
+      <%= f.label :hours, "Hours (i.e. 0.25, 1.5, 0) (leave blank if task pending)" %>
+      <%= f.text_field :hours, {:class => "short"} %>
+    </li>
+    <li>
+      <%= f.submit submit %>
+    </li>
+  </ul>
+<% end %>

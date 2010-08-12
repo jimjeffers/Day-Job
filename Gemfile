@@ -8,6 +8,7 @@ gem "heroku"
 
 gem "rack", "1.1.0"
 gem "authlogic"
+gem "by_star"
 gem "exception_notification"
 gem "fastercsv"
 gem "aasm"

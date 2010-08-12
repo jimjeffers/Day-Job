@@ -63,7 +63,7 @@
    ------------------------------------------------------ */
    .contextual_navigation {
       border-top: 2px solid #000;
-      margin-top: 59px;
+      margin-top: 84px;
       overflow: hidden;
       padding-top: 10px;
    }
@@ -87,4 +87,26 @@
    
    .contextual_navigation a:hover {
       background: rgba(0,0,0,1);
+   }
+
+/* =TIME_DISPLAY
+   ------------------------------------------------------ */
+   .time_display {
+      left: 0;
+      position: absolute;
+      top: 30px;
+      
+   }
+   
+   .time_display > li {
+      float: left;
+      font-size: 1.5em;
+      line-height: 1.5em;
+      width: 80px;
+   }
+   
+   .time_display > li span {
+      display: block;
+      font-size: 0.5em;
+      line-height: 1.5em;
    }

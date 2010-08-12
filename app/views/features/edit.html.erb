@@ -1,5 +1,5 @@
 <%= link_to '&lt; Return to Features', project_features_path(@project), :id => "step_back" %>
 
-<h2>Editing Feature</h2>
+<h2>Editing feature</h2>
 
-<%= render :partial => 'project_form', :locals => {:project => nil, :feature => @feature, :submit => "Update Feature"} %>
+<%= render :partial => 'feature_form', :locals => {:project => nil, :feature => @feature, :submit => "Update Feature"} %>

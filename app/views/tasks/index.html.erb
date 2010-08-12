@@ -1,0 +1,9 @@
+<ul class="tasks item_list">
+<% @tasks.each do |task| %>
+  <li class="<%= "completed" if task.completed? %>">
+    <ul class="item_detail">
+      <li class="item_name"><%= link_to task.name, edit_feature_task_path(@feature,task) %></li>
+    </ul>
+  </li>
+<% end %>
+</ul>

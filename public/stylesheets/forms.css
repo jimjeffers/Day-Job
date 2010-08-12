@@ -66,6 +66,10 @@
       border-top: 3px solid rgba(0,0,0,0.5);
    }
    
+   input[type="text"].short {
+      width: 60px;
+   }
+   
    label {
       display: block;
       font-weight: bold;

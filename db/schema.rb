@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100812083817) do
+ActiveRecord::Schema.define(:version => 20100812183248) do
 
   create_table "features", :force => true do |t|
     t.string   "name"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20100812083817) do
     t.integer  "feature_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "last_updated_by"
   end
 
   add_index "tasks", ["aasm_state"], :name => "index_tasks_on_aasm_state"
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20100812083817) do
   add_index "tasks", ["completed_by"], :name => "index_tasks_on_completed_by"
   add_index "tasks", ["created_by"], :name => "index_tasks_on_created_by"
   add_index "tasks", ["feature_id"], :name => "index_tasks_on_feature_id"
+  add_index "tasks", ["last_updated_by"], :name => "index_tasks_on_last_updated_by"
 
   create_table "users", :force => true do |t|
     t.string   "login",                              :null => false

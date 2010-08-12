@@ -9,7 +9,10 @@
 <body>
   <%= render :partial => 'layouts/alerts' %>
   <div id="content" class="content">
-    <hgroup><h1><span class="label">Project:</span><%= @project.name %></h1></hgroup>
+    <hgroup>
+      <h1><span class="label">Project:</span> <%= @project.name %></h1>
+    </hgroup>
+    <h2><span class="label">Feature:</span> <%= @feature.name %></h2>
     <%= yield :layout %>
   </div>
   <div id="secondary_content" class="content">
@@ -20,19 +23,13 @@
     </ul>
     <nav class="contextual_navigation">
       <ul>
-        <li><%= link_to 'Feature List', project_features_path(@project) %></li>
-        <li><%= link_to 'Add New Feature', new_project_feature_path(@project) %></li>
-        <li><%= link_to 'Invite User', invite_project_path(@project) %></li>
+        <li><%= link_to 'Add New Task', new_feature_task_path(@feature) %></li>
       </ul>
     </nav>
-    <h2>People Working On This Project</h2>
-    <ul>
-    <% for user in @project.users %>
-      <li><%= user.login %><br/><a href="mailto:<%= user.email %>"><%= user.email %></a></li>
-    <% end %>
-    </ul>
   </div>
-  <%= render :partial => 'layouts/back_link' %>
+  <%= link_to "Return to Project Features", 
+              project_features_path(@project), 
+              :id => "back_link" if current_user %>
   <%= render :partial => 'layouts/account_navigation' %>
   <%= render :partial => 'layouts/script' %>
 </body>

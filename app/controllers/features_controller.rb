@@ -5,8 +5,8 @@ class FeaturesController < ApplicationController
   # GET /features
   # GET /features.xml
   def index
-    @features = @project.features
-
+    @features     = @project.features
+        
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @features }
@@ -60,7 +60,7 @@ class FeaturesController < ApplicationController
   # PUT /features/1
   # PUT /features/1.xml
   def update
-    @feature = Feature.find(params[:id])
+    @feature = @project.features.find(params[:id])
 
     respond_to do |format|
       if @feature.update_attributes(params[:feature])
@@ -88,13 +88,19 @@ class FeaturesController < ApplicationController
   private
   
   def get_project
-    if params[:project_id]
-      @project = current_user.projects.find(params[:project_id])
-    else
-      feature = Feature.find(params[:id])
-      @project = current_user.projects.find(feature.project.id) unless feature.nil?
+    begin
+      if params[:project_id]
+        @project = current_user.projects.find(params[:project_id])
+      else
+        feature = Feature.find(params[:id])
+        @project = current_user.projects.find(feature.project.id) unless feature.nil?
+      end
+      @month_hours  = Task.for_project(@project).by_month(Time.now,   :field => :completed_on).sum(:hours)
+      @week_hours   = Task.for_project(@project).by_week(Time.now,    :field => :completed_on).sum(:hours)
+      @day_hours    = Task.for_project(@project).by_day(Time.now,     :field => :completed_on).sum(:hours)
+    rescue
+      redirect_to(projects_path, :notice => "The project you were looking for could not be found.") if @project.nil?
     end
-    redirect_to(projects_path, :notice => "The project you were looking for could not be found.") if @project.nil?
   end
   
 end

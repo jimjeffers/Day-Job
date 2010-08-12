@@ -2,7 +2,7 @@
 <% @features.each do |feature| %>
   <li>
     <ul class="item_detail">
-      <li class="item_name"><%= link_to feature.name, feature %></li>
+      <li class="item_name"><%= link_to feature.name, feature_tasks_path(feature) %></li>
       <li class="edit_link"><%= link_to 'edit', edit_feature_path(feature) %></li>
     </ul>
   </li>

@@ -35,6 +35,10 @@
       padding: 0;
    }
    
+   .item_list .completed {
+      opacity: 0.5;
+   }
+   
    .item_detail > li {
       float: left;
    }

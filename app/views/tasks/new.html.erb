@@ -1,0 +1,5 @@
+<%= link_to '&lt; Return to Tasks', feature_tasks_path(@feature), :id => "step_back" %>
+
+<h2>New task</h2>
+
+<%= render :partial => 'task_form', :locals => {:task => @task, :feature => @feature, :submit => "Create Task"} %>

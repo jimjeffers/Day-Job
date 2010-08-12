@@ -3,7 +3,7 @@
   <li class="project" id="project_<%= project.id %>">
     <ul class="project_details item_detail">
       <li class="item_name"><%= link_to project.name, project_features_path(project) %></li>
-      <% if @admin_projects.include?(project)%>
+      <% if @admin_projects.include?(project.id)%>
       <li class="edit_link"><%= link_to 'edit', edit_project_path(project) %></li>
       <% end %>
     </ul>

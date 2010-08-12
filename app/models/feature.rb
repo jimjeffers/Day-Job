@@ -2,7 +2,8 @@ class Feature < ActiveRecord::Base
   # --------------------------------------------------------------
   # Relationships
   
-  belongs_to :project
+  belongs_to  :project
+  has_many    :tasks
 
   # --------------------------------------------------------------
   # Validations

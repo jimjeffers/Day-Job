@@ -1,0 +1,9 @@
+<%= link_to '&lt; Return to Tasks', feature_tasks_path(@feature), :id => "step_back" %>
+
+<h2>Edit task</h2>
+
+<% if @task.completed? %>
+<h3>This task was completed by <%= @user_name %> on <%= @completed_date %></h3>
+<% end %>
+
+<%= render :partial => 'task_form', :locals => {:task => @task, :feature => @feature, :submit => "Update Task"} %>

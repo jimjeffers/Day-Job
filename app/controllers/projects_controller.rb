@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects.xml
   def index
     @projects = current_user.projects
-    @admin_projects = current_user.admin_projects
+    @admin_projects = current_user.admin_projects.map { |p| p.id }
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @projects }

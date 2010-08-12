@@ -14,12 +14,30 @@ class User < ActiveRecord::Base
   # --------------------------------------------------------------
   # Relationships
   #
-  # A user has many tasks.
+  # A user has many tasks that he or she has completed or those
+  # that have been assigned to them.
   
   has_many :categories
+  
   has_many :invitations
-  has_many :projects, :through => :invitations, :conditions => ["invitations.aasm_state=?","accepted"]
-  has_many :admin_projects, :source => :project, :through => :invitations, :conditions => ["invitations.aasm_state=? AND (invitations.admin=? OR invitations.owner=?)","accepted",1,1]
+  
+  has_many :projects, 
+           :through => :invitations, 
+           :conditions => ["invitations.aasm_state=?","accepted"]
+  
+  has_many :admin_projects, 
+           :source => :project, 
+           :through => :invitations, 
+           :conditions => ["invitations.aasm_state=? AND (invitations.admin=? OR invitations.owner=?)","accepted",1,1]
+  
+  has_many :tasks, 
+           :class_name => "Task", 
+           :foreign_key => "completed_by"
+  
+  has_many :assigned_tasks, 
+           :class_name => "Task", 
+           :foreign_key => "assigned_to",
+           :conditions => ["tasks.aasm_state!=?","completed"]
   
   # --------------------------------------------------------------
   # Validations
