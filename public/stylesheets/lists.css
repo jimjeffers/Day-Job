@@ -78,3 +78,9 @@
       display: block;
       padding: 5px;
    }
+
+/* =USER_LIST
+   ------------------------------------------------------ */
+   .user_list li {
+      padding: 4px 10px;
+   }

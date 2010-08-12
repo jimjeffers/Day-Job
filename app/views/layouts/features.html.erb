@@ -20,13 +20,12 @@
     </ul>
     <nav class="contextual_navigation">
       <ul>
-        <li><%= link_to 'Feature List', project_features_path(@project) %></li>
         <li><%= link_to 'Add New Feature', new_project_feature_path(@project) %></li>
-        <li><%= link_to 'Invite User', invite_project_path(@project) %></li>
       </ul>
     </nav>
     <h2>People Working On This Project</h2>
-    <ul>
+    <h3><%= link_to 'Invite Another User', invite_project_path(@project) %></h3>
+    <ul class="user_list">
     <% for user in @project.users %>
       <li><%= user.login %><br/><a href="mailto:<%= user.email %>"><%= user.email %></a></li>
     <% end %>
