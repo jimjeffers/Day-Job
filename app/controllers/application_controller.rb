@@ -69,4 +69,14 @@ class ApplicationController < ActionController::Base
         redirect_to path
       end
     end
+    
+    def time_for_project(project)
+      if @project.nil?
+        @month_hours, @week_hours, @day_hours = 0, 0 ,0
+      else
+        @month_hours  = Task.for_project(project).by_month(Time.now, :field => :completed_on).sum(:hours)
+        @week_hours   = Task.for_project(project).by_current_work_week(:field => :completed_on).sum(:hours)
+        @day_hours    = Task.for_project(project).by_day(Time.now, :field => :completed_on).sum(:hours)
+      end
+    end
 end

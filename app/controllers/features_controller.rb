@@ -95,9 +95,7 @@ class FeaturesController < ApplicationController
         feature = Feature.find(params[:id])
         @project = current_user.projects.find(feature.project.id) unless feature.nil?
       end
-      @month_hours  = Task.for_project(@project).by_month(Time.now, :field => :completed_on).sum(:hours)
-      @week_hours   = Task.for_project(@project).by_current_work_week(:field => :completed_on).sum(:hours)
-      @day_hours    = Task.for_project(@project).by_day(Time.now, :field => :completed_on).sum(:hours)
+      time_for_project(@project)
     rescue
       redirect_to(projects_path, :notice => "The project you were looking for could not be found.") if @project.nil?
     end
