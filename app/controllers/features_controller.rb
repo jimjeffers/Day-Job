@@ -48,6 +48,7 @@ class FeaturesController < ApplicationController
 
     respond_to do |format|
       if @project.features << @feature
+        Notifications.deliver_new_feature(current_user,@feature)
         format.html { redirect_to(project_features_path(@project), :notice => 'Feature was successfully created.') }
         format.xml  { render :xml => @feature, :status => :created, :location => @feature }
       else

@@ -1,9 +1,12 @@
 <%= link_to '&lt; Return to Tasks', feature_tasks_path(@feature), :id => "step_back" %>
 
+<% if @completed_date and @was_not_completed_by_you %>
+<h2>Task: <%= @task.name %></h2>
+<h3>This task was completed by <%= @user_name %> on <%= @completed_date %> in <%= @task.hours %> hours.</h3>
+<p>Task was created by <%= @task.creator.login %> and assigned to <%= @task.delegate.login or "anyone" %>.</p>
+<ul></ul>
+<% else %>
 <h2>Edit task</h2>
-
-<% if @task.completed? %>
-<h3>This task was completed by <%= @user_name %> on <%= @completed_date %></h3>
-<% end %>
-
+<%= "<h3>You completed this task on: #{@completed_date}</h3>" if !@was_not_completed_by_you %>
 <%= render :partial => 'task_form', :locals => {:task => @task, :feature => @feature, :submit => "Update Task"} %>
+<% end %>

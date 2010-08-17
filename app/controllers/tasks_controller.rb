@@ -41,6 +41,7 @@ class TasksController < ApplicationController
     if @task.completed?
       @user_name = @task.user.login
       @completed_date = @task.completed_on.strftime("%B %d, %Y")
+      @was_not_completed_by_you = @task.was_not_completed_by(current_user)
     end
   end
 
@@ -48,8 +49,8 @@ class TasksController < ApplicationController
   # POST /tasks.xml
   def create
     @task = Task.new(params[:task])
-    @task.created_by = current_user
-    @task.last_updated_by = current_user
+    @task.created_by = current_user.id
+    @task.last_updated_by = current_user.id
 
     respond_to do |format|
       if @feature.tasks << @task
@@ -70,7 +71,7 @@ class TasksController < ApplicationController
   # PUT /tasks/1.xml
   def update
     @task = @feature.tasks.find(params[:id])
-    @task.last_updated_by = current_user
+    @task.last_updated_by = current_user.id
     
     respond_to do |format|
       if @task.update_attributes(params[:task])

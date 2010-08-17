@@ -29,6 +29,12 @@
    .content > hgroup {
       border-bottom: 2px solid #000;
    }
+   
+   .description {
+      font-size: 1.25em;
+      line-height: 1.5em;
+      margin: 10px 0;
+   }
 
 /* =SECONDARY_CONTENT
    ------------------------------------------------------ */

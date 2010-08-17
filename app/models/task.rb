@@ -4,6 +4,7 @@ class Task < ActiveRecord::Base
   
   belongs_to :feature,        :class_name => "Feature", :foreign_key => "feature_id"
   belongs_to :creator,        :class_name => "User",    :foreign_key => "created_by"
+  belongs_to :delegator,      :class_name => "User",    :foreign_key => "last_updated_by"
   belongs_to :delegate,       :class_name => "User",    :foreign_key => "assigned_to"
   belongs_to :user,           :class_name => "User",    :foreign_key => "completed_by"
   
@@ -34,20 +35,20 @@ class Task < ActiveRecord::Base
       :include    => {:feature => :project } 
     }
   }
-  named_scope :for_month, lambda { |time| {
-      :conditions => ['tasks.completed_on BETWEEN ? and ?',date.last_month.end_of_month,date.next_month.beggining_of_month]
-    }
-  }
   named_scope :fifo,    :order => 'tasks.created_at ASC'
   named_scope :lifo,    :order => 'tasks.created_at DESC'
   named_scope :current, :order => 'tasks.updated_at DESC'
   
   # --------------------------------------------------------------
   # Callbacks
-    
+  
+  def after_save
+    Notifications.deliver_assigned_task(self) unless self.delegate.nil? or self.completed? or self.delegator == self.delegate
+  end
+  
   # --------------------------------------------------------------
   # Class Methods
-    
+  
   # --------------------------------------------------------------
   # Instance Methods
   
@@ -57,6 +58,10 @@ class Task < ActiveRecord::Base
   
   def completed_now!
     self.update_attributes({:completed_on => Time.now, :completed_by => self.last_updated_by})
+  end
+  
+  def was_not_completed_by(user)
+    self.user.nil? || self.user != user
   end
   
 end
