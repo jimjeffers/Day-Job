@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100812183248) do
+ActiveRecord::Schema.define(:version => 20100817222207) do
 
   create_table "features", :force => true do |t|
     t.string   "name"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20100812183248) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "real_name"
   end
 
   add_index "users", ["crypted_password"], :name => "index_users_on_crypted_password"

@@ -11,8 +11,8 @@
     </li>
     <% unless task.completed? %>
     <li>
-      <%= f.label   :assigned_to, "Assigned to:" %>
-      <%= f.select  :assigned_to, feature.project.users.map { |u| [u.login, u.id] }, :include_blank => "Anyone" %>
+      <%= f.label   :assigned_to, "Assigned to" %>
+      <%= f.select  :assigned_to, feature.project.users.map { |u| ["#{u.real_name} (#{u.login})", u.id] }, :include_blank => "Anyone" %>
     </li>
     <% end %>
     <li>

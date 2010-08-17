@@ -9,6 +9,12 @@
       <%= f.label :email, "Email Address" %>
       <%= f.text_field :email %>
     </li>
+    <% unless @user.new_record? %>
+    <li class="real_name">
+      <%= f.label :real_name, "Real Name (i.e. \"John Smith\")" %>
+      <%= f.text_field :real_name %>
+    </li>
+    <% end %>
     <li class="password">
       <%= f.label :password, "Password" %>
       <%= f.password_field :password %>
