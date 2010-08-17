@@ -58,6 +58,7 @@ class Task < ActiveRecord::Base
   
   def completed_now!
     self.update_attributes({:completed_on => Time.now, :completed_by => self.last_updated_by})
+    Notifications.deliver_completed_task(self)
   end
   
   def was_not_completed_by(user)
