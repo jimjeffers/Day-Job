@@ -7,6 +7,6 @@
 <ul></ul>
 <% else %>
 <h2>Edit task</h2>
-<%= "<h3>You completed this task on: #{@completed_date}</h3>" if !@was_not_completed_by_you %>
+<%= "<h3>You completed this task on: #{@completed_date}</h3>" if !@was_not_completed_by_you and !@completed_date.nil? %>
 <%= render :partial => 'task_form', :locals => {:task => @task, :feature => @feature, :submit => "Update Task"} %>
 <% end %>

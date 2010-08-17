@@ -19,6 +19,7 @@ class Notifications < ActionMailer::Base
     
     body       :project_name  => feature.project.name,
                :feature_name  => feature.name,
+               :description   => feature.description, 
                :user_name     => author.login,
                :link          => feature_tasks_url(feature) 
   end
