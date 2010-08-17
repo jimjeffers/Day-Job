@@ -57,4 +57,8 @@ class User < ActiveRecord::Base
   # --------------------------------------------------------------
   # Instance Methods
   
+  def preferred_name
+    self.real_name or self.login
+  end
+  
 end

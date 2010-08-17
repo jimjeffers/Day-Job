@@ -12,7 +12,7 @@ class Notifications < ActionMailer::Base
   end
   
   def new_feature(author,feature,sent_at = Time.now)
-    subject    "[#{feature.project.name}] #{author.login} has created a new feature."
+    subject    "[#{feature.project.name}] #{author.preferred_name} has created a new feature."
     recipients feature.project.users.map { |u| u.email }.join(", ")
     from       'jim@sumocreations.com'
     sent_on    sent_at
@@ -20,12 +20,12 @@ class Notifications < ActionMailer::Base
     body       :project_name  => feature.project.name,
                :feature_name  => feature.name,
                :description   => feature.description, 
-               :user_name     => author.login,
+               :user_name     => author.preferred_name,
                :link          => feature_tasks_url(feature) 
   end
   
   def assigned_task(task,sent_at = Time.now)
-    subject    "[#{task.feature.project.name}] #{task.delegator.login} has assigned you a new task."
+    subject    "[#{task.feature.project.name}] #{task.delegator.preferred_name} has assigned you a new task."
     recipients task.delegate.email
     from       'jim@sumocreations.com'
     sent_on    sent_at
@@ -33,7 +33,7 @@ class Notifications < ActionMailer::Base
     body       :project_name  => task.feature.project.name,
                :feature_name  => task.feature.name,
                :task_name     => task.name,
-               :user_name     => task.delegator.login,
+               :user_name     => task.delegator.preferred_name,
                :link          => feature_task_url(task.feature,task) 
   end
   
@@ -46,7 +46,7 @@ class Notifications < ActionMailer::Base
     body       :project_name  => task.feature.project.name,
                :feature_name  => task.feature.name,
                :task_name     => task.name,
-               :user_name     => task.user.login,
+               :user_name     => task.user.preferred_name,
                :hours         => task.hours, 
                :link          => feature_task_url(task.feature,task) 
   end

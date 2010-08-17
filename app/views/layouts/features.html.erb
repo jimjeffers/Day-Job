@@ -27,7 +27,7 @@
     <h3><%= link_to 'Invite Another User', invite_project_path(@project) %></h3>
     <ul class="user_list">
     <% for user in @project.users %>
-      <li><%= user.real_name || user.login %><br/><a href="mailto:<%= user.email %>"><%= user.email %></a></li>
+      <li><%= user.preferred_name %><br/><a href="mailto:<%= user.email %>"><%= user.email %></a></li>
     <% end %>
     </ul>
   </div>
