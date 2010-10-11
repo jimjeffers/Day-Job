@@ -2,8 +2,8 @@
 <ul class="log item_list">
   <% for task in @tasks %>
   <li>
+    <span class="hours"><%= task.hours %>h</span>
     <span class="name"><%= task.name %></span>
-    <span class="hours"><%= task.hours %></span>
     <span class="date"><%= task.completed_on.strftime("%m/%d/%y") %></span>
   </li>
   <% end %>
