@@ -93,3 +93,16 @@
    .user_list li {
       padding: 4px 10px;
    }
+
+/* =LOG
+   ------------------------------------------------------ */
+   .item_list .name,
+   .item_list .hours,
+   .item_list .date {
+      display: inline-block;
+      width: 80px;
+   }
+   
+   .item_list .name {
+      width: 300px;
+   }
