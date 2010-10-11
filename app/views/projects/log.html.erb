@@ -1,0 +1,13 @@
+<% if !@tasks.blank? %>
+<ul class="log">
+  <% for task in @tasks %>
+  <li>
+    <span class="name"><%= task.name %></span>
+    <span class="date"><%= task.completed_on %></span>
+    <span class="hours"><%= task.hours %></span>
+  </li>
+  <% end %>
+</ul>
+<% else %>
+  <p>No time logged for this project.</p>
+<% end %>

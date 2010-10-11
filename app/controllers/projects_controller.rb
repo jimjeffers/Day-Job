@@ -33,6 +33,15 @@ class ProjectsController < ApplicationController
       format.xml  { render :xml => @project }
     end
   end
+  
+  def log
+    @project = current_user.projects.find(params[:id])
+    @tasks = current_user.tasks.for_project(@project).current
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @project }
+    end
+  end
 
   # GET /projects/1/edit
   def edit

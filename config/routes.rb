@@ -8,7 +8,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :projects, 
                 :member               => { :invite        => [:get],
                                            :suspend       => [:get],
-                                           :send_invite   => [:post] },
+                                           :send_invite   => [:post],
+                                           :log           => [:get] },
                 :shallow => true do |project|
     
     # --------------------------------------------------------------
