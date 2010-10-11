@@ -37,6 +37,8 @@ class ProjectsController < ApplicationController
   def log
     @project = current_user.projects.find(params[:id])
     @tasks = current_user.tasks.for_project(@project).current
+    @total = @tasks.sum(:hours)
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @project }
